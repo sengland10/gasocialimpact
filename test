@@ -1,3 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSIC Fundraising Campaign Frames</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Familjen Grotesk', sans-serif;
+            background: #ffffff;
+            padding: 40px 20px;
+            line-height: 1.6;
+            color: #2c2c2c;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Young Serif', serif;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 48px;
+            color: #149a49;
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            font-size: 32px;
+            color: #149a49;
+            margin-top: 60px;
+            margin-bottom: 30px;
+        }
+        
+        .intro-text {
+            font-size: 18px;
+            color: #4a4a4a;
+            margin-bottom: 60px;
+            max-width: 800px;
+        }
+        
+        /* Frame Style 1: Campaign Progress Frame */
+        .campaign-frame {
+            background: linear-gradient(135deg, #149a49 0%, #66b445 100%);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .campaign-frame::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -5%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(238,198,26,0.15) 0%, transparent 60%);
+            border-radius: 50%;
+        }
+        
+        .campaign-header {
+            color: white;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .campaign-title {
+            font-family: 'Young Serif', serif;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .campaign-subtitle {
+            font-size: 16px;
+            opacity: 0.95;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .campaign-subtitle svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .embed-container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        <iframe class="airtable-embed"src="https://airtable.com/embed/appUFzGsUSRf4Cmvt/shr413ysvlt4eoC2V" 
+          frameborder="0"
+          onmousewheel=""
+          width="100%"
+          height="1066"
+          style="background: transparent; border: 1px solid #ccc;"
+          loading="lazy">
+        </iframe>
+                }
+        
+        /* Frame Style 2: Sponsor Showcase */
+        .sponsor-showcase {
+            background: #e8f8eb;
+            border: 1px solid #66b445;
+            border-radius: 12px;
+            padding: 35px;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .sponsor-badge {
+            position: absolute;
+            top: -14px;
+            left: 30px;
+            background: #eec61a;
+            color: #2c2c2c;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .sponsor-badge svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .sponsor-content {
+            margin-top: 20px;
+        }
+        
+        .sponsor-title {
+            font-family: 'Young Serif', serif;
+            font-size: 28px;
+            color: #149a49;
+            margin-bottom: 20px;
+        }
+        
+        /* Frame Style 3: Milestone Tracker */
+        .milestone-frame {
+            background: white;
+            border-left: 4px solid #63c3c2;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .milestone-indicator {
+            position: absolute;
+            left: -12px;
+            top: 40px;
+            width: 20px;
+            height: 20px;
+            background: #63c3c2;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 2px 8px rgba(99,195,194,0.3);
+        }
+        
+        .milestone-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .milestone-title {
+            font-family: 'Young Serif', serif;
+            font-size: 32px;
+            color: #149a49;
+        }
+        
+        .milestone-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: #d4f1f1;
+            border-radius: 20px;
+            color: #63c3c2;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .milestone-status svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        /* Frame Style 4: Interactive Tab Frame */
+        .tab-frame {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+        
+        .tab-nav {
+            display: flex;
+            background: #4750a2;
+            padding: 0;
+        }
+        
+        .tab-button {
+            flex: 1;
+            padding: 18px;
+            background: transparent;
+            border: none;
+            color: rgba(255,255,255,0.8);
+            font-family: 'Familjen Grotesk', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .tab-button:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+        
+        .tab-button.active {
+            color: white;
+            background: rgba(255,255,255,0.05);
+        }
+        
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #eec61a;
+        }
+        
+        .tab-button svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .tab-content {
+            padding: 40px;
+            min-height: 400px;
+            background: #fff;
+        }
+        
+        .tab-pane {
+            display: none;
+        }
+        
+        .tab-pane.active {
+            display: block;
+        }
+        
+        /* Frame Style 5: Floating Recognition Frame */
+        .floating-frame {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 40px rgba(20,154,73,0.08);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .floating-frame:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 50px rgba(20,154,73,0.12);
+        }
+        
+        .floating-accent {
+            position: absolute;
+            top: -20px;
+            right: 40px;
+            width: 56px;
+            height: 56px;
+            background: #f15922;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(241,89,34,0.25);
+        }
+        
+        .floating-accent svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+        
+        .floating-title {
+            font-family: 'Young Serif', serif;
+            font-size: 30px;
+            color: #149a49;
+            margin-bottom: 20px;
+        }
+        
+        .floating-subtitle {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+            
+            .campaign-title {
+                font-size: 28px;
+            }
+            
+            .campaign-frame {
+                padding: 25px;
+            }
+            
+            .tab-nav {
+                flex-direction: column;
+            }
+            
+            .tab-button {
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            .tab-button.active::after {
+                width: 3px;
+                height: 100%;
+                left: 0;
+                bottom: 0;
+            }
+        }
+        
+        /* Airtable iframe styles */
+        .airtable-embed {
+            width: 100%;
+            height: 533px;
+            background: transparent;
+            border: none;
+            border-radius: 4px;
+        }
+        
+        /* Usage instructions */
+        .instructions {
+            background: #fff1d3;
+            border-left: 4px solid #eec61a;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+        
+        .instructions h3 {
+            font-family: 'Young Serif', serif;
+            font-size: 20px;
+            color: #149a49;
+            margin-bottom: 15px;
+        }
+        
+        .instructions code {
+            background: #2c2c2c;
+            color: #eec61a;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fundraising Campaign Embed Frames</h1>
+        
+        <p class="intro-text">
+            Transform your Airtable donor data into compelling visual stories. Each frame targets specific fundraising scenarios while maintaining real-time synchronization with your database.
+        </p>
+        
+        <h2>Campaign Progress Frame</h2>
+        <div class="campaign-frame">
+            <div class="campaign-header">
+                <div class="campaign-title">2025 Annual Fund</div>
+                <div class="campaign-subtitle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    Live donor updates
+                </div>
+            </div>
+            <div class="embed-container">
+                <div class="embed-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <line x1="9" y1="9" x2="15" y2="9"/>
+                        <line x1="9" y1="15" x2="15" y2="15"/>
+                    </svg>
+                    <p>Replace with your Airtable embed</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>Quick Implementation</h3>
+            <p>Replace the <code>.embed-placeholder</code> div with your Airtable iframe. The frame automatically scales to your content dimensions.</p>
+        </div>
+        
+        <h2>Sponsor Showcase</h2>
+        <div class="sponsor-showcase">
+            <div class="sponsor-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+                Featured Partners
+            </div>
+            <div class="sponsor-content">
+                <div class="sponsor-title">Founding Supporters</div>
+                <div class="embed-container">
+                    <div class="embed-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <line x1="9" y1="9" x2="15" y2="9"/>
+                            <line x1="9" y1="15" x2="15" y2="15"/>
+                        </svg>
+                        <p>Logo grid Airtable view</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Milestone Tracker</h2>
+        <div class="milestone-frame">
+            <div class="milestone-indicator"></div>
+            <div class="milestone-header">
+                <div class="milestone-title">Impact Metrics</div>
+                <div class="milestone-status">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                    </svg>
+                    Live
+                </div>
+            </div>
+            <div class="embed-container">
+                <div class="embed-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <line x1="9" y1="9" x2="15" y2="9"/>
+                        <line x1="9" y1="15" x2="15" y2="15"/>
+                    </svg>
+                    <p>Milestone tracking view</p>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Multi-View Dashboard</h2>
+        <div class="tab-frame">
+            <div class="tab-nav">
+                <button class="tab-button active" onclick="switchTab(event, 'donors')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    Donors
+                </button>
+                <button class="tab-button" onclick="switchTab(event, 'impact')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10"/>
+                        <line x1="12" y1="20" x2="12" y2="4"/>
+                        <line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                    Impact
+                </button>
+                <button class="tab-button" onclick="switchTab(event, 'timeline')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    Timeline
+                </button>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="donors">
+                    <div class="embed-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <line x1="9" y1="9" x2="15" y2="9"/>
+                            <line x1="9" y1="15" x2="15" y2="15"/>
+                        </svg>
+                        <p>Donor list view</p>
+                    </div>
+                </div>
+                <div class="tab-pane" id="impact">
+                    <div class="embed-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <line x1="9" y1="9" x2="15" y2="9"/>
+                            <line x1="9" y1="15" x2="15" y2="15"/>
+                        </svg>
+                        <p>Impact metrics view</p>
+                    </div>
+                </div>
+                <div class="tab-pane" id="timeline">
+                    <div class="embed-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <line x1="9" y1="9" x2="15" y2="9"/>
+                            <line x1="9" y1="15" x2="15" y2="15"/>
+                        </svg>
+                        <p>Campaign timeline view</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Recognition Wall</h2>
+        <div class="floating-frame">
+            <div class="floating-accent">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="7"/>
+                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                </svg>
+            </div>
+            <div class="floating-title">Donor Recognition</div>
+            <div class="floating-subtitle">Celebrating our community of supporters</div>
+            <div class="embed-container">
+                <div class="embed-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <line x1="9" y1="9" x2="15" y2="9"/>
+                        <line x1="9" y1="15" x2="15" y2="15"/>
+                    </svg>
+                    <p>Recognition Airtable view</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function switchTab(event, tabName) {
+            const tabs = document.querySelectorAll('.tab-button');
+            const panes = document.querySelectorAll('.tab-pane');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            panes.forEach(pane => pane.classList.remove('active'));
+            
+            event.currentTarget.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+    </script>
+</body>
+</html>
+
 
 <!DOCTYPE html>
 <html lang="en">
