@@ -1,4 +1,3 @@
-    
 <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -16,28 +15,33 @@
                 box-sizing: border-box;
             }
             html {
-                height: 95%;
+                height: 100%;
             }
             body {
                 font-family: 'Familjen Grotesk', sans-serif;
                 background: #ffffff;
                 line-height: 1.6;
                 color: #2c2c2c;
-                min-height: 95%;
+                min-height: 100%;
                 padding: 0;
                 margin: 0;
+                display: flex;
+                flex-direction: column;
             }
             .container {
                 max-width: 100%;
                 width: 100%;
+                flex: 1;
             }
             /* Frame Style 1: Resource Library Header */
             .library-header-frame {
                 background: linear-gradient(135deg, #e8f8eb 0%, #fff1d3 100%);
                 border-radius: 0;
-                padding: 45px 40px;
+                padding: 45px 40px 20px 40px;
                 position: relative;
-                min-height: 80vh;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
             }
             .library-header-frame::before {
                 content: '';
@@ -61,7 +65,6 @@
                 border-radius: 50%;
                 pointer-events: none;
             }
-            
             /* Tab Navigation */
             .tab-nav {
                 display: flex;
@@ -72,6 +75,7 @@
                 max-width: 1400px;
                 margin-left: auto;
                 margin-right: auto;
+                width: 100%;
             }
             .tab-button {
                 flex: 1;
@@ -114,7 +118,6 @@
             .tab-button.active svg {
                 stroke: white;
             }
-            
             /* Tab Content */
             .tab-content {
                 display: none;
@@ -122,19 +125,21 @@
                 z-index: 1;
                 max-width: 1400px;
                 margin: 0 auto;
+                width: 100%;
+                flex: 1;
+                flex-direction: column;
             }
             .tab-content.active {
-                display: block;
+                display: flex;
                 animation: fadeIn 0.4s ease-out;
             }
             @keyframes fadeIn {
                 from { opacity: 0; transform: translateY(10px); }
                 to { opacity: 1; transform: translateY(0); }
             }
-            
             .content-header {
                 color: #2c2c2c;
-                margin-bottom: 30px;
+                margin-bottom: 20px;
             }
             .content-title {
                 font-family: 'Young Serif', serif;
@@ -148,7 +153,6 @@
                 line-height: 1.6;
                 color: #555;
             }
-            
             /* Embed container for Airtable */
             .embed-container {
                 background: white;
@@ -156,22 +160,24 @@
                 padding: 0;
                 position: relative;
                 box-shadow: 0 4px 20px rgba(71,80,162,0.1);
-                margin-top: 25px;
                 border: 2px solid #e0e0e0;
+                flex: 1;
+                display: flex;
+                margin-bottom: 20px;
+                overflow: hidden;
             }
             .airtable-embed {
                 width: 100%;
-                height: 95%;
-                min-height: 800px;
+                height: 100%;
+                min-height: 600px;
                 background: transparent;
                 border: none;
                 border-radius: 12px;
                 display: block;
             }
-            
             @media (max-width: 768px) {
                 .library-header-frame {
-                    padding: 25px 20px;
+                    padding: 25px 20px 20px 20px;
                 }
                 .content-title {
                     font-size: 24px;
@@ -183,8 +189,7 @@
                     width: 100%;
                 }
                 .airtable-embed {
-                    height: 70vh;
-                    min-height: 600px;
+                    min-height: 500px;
                 }
             }
         </style>
@@ -208,7 +213,6 @@
                     Impact Investing Toolkit
                 </button>
             </div>
-            
             <!-- Tab 1: Educational Resource Library -->
             <div id="library" class="tab-content active">
                 <div class="content-header">
@@ -218,10 +222,9 @@
                     </div>
                 </div>
                 <div class="embed-container">
-                    <iframe class="airtable-embed" src="https://airtable.com/embed/appaiDoxyHhRJmqpq/shrqVytasNgCj6hA2" frameborder="1" onmousewheel=""></iframe>
+                    <iframe class="airtable-embed" src="https://airtable.com/embed/appaiDoxyHhRJmqpq/shrqVytasNgCj6hA2" frameborder="0" onmousewheel=""></iframe>
                 </div>
             </div>
-            
             <!-- Tab 2: Impact Investing Toolkit -->
             <div id="toolkit" class="tab-content">
                 <div class="content-header">
@@ -231,24 +234,29 @@
                     </div>
                 </div>
                 <div class="embed-container">
-                    <iframe class="airtable-embed" src="https://airtable.com/embed/appaiDoxyHhRJmqpq/shrPYkQL7VWDj8x8o" frameborder="1" onmousewheel=""></iframe>
+                    <iframe class="airtable-embed" src="https://airtable.com/embed/appaiDoxyHhRJmqpq/shrPYkQL7VWDj8x8o" frameborder="0" onmousewheel=""></iframe>
                 </div>
             </div>
         </div>
     </div>
-    
     <script>
     function switchTab(event, tabName) {
         const tabs = document.querySelectorAll('.tab-button');
         const contents = document.querySelectorAll('.tab-content');
-        
         tabs.forEach(tab => tab.classList.remove('active'));
         contents.forEach(content => content.classList.remove('active'));
-        
         event.currentTarget.classList.add('active');
         document.getElementById(tabName).classList.add('active');
+        // Send height after tab switch
+        setTimeout(sendHeight, 100);
     }
+    function sendHeight() {
+        var height = document.documentElement.scrollHeight;
+        window.parent.postMessage({height: height}, 'https://gasocialimpact.com');
+    }
+    window.addEventListener('load', sendHeight);
+    window.addEventListener('resize', sendHeight);
     </script>
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"60173610961e406eaad04d7621959afb","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1W4dCJQB0Jgv0pVPAoqYdFFBXJg==" data-cf-beacon='{"version":"2024.11.0","token":"6017361096 1e406eaad04d762195 9afb","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
     </body>
     </html>
