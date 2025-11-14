@@ -27,7 +27,7 @@ header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px so
 .btn.primary{background:var(--brand-grn); color:#fff; border:none}
 .btn.ghost{background:#fff; border:1px dashed var(--line); color:var(--ink-2)}
 
-main{max-width:1600px; margin:18px auto 10px; padding:0 18px; display:grid; grid-template-columns:280px 1fr; gap:16px}
+main{max-width:1600px; margin:18px auto 40px; padding:0 18px; display:grid; grid-template-columns:280px 1fr; gap:16px}
 aside{position:sticky; top:66px; align-self:start; background:#fff; border:1px solid var(--line); border-radius:14px; padding:12px; box-shadow:var(--shadow)}
 .nav{display:grid; gap:6px}
 .nav button{width:100%; text-align:left; background:#fff; color:var(--ink); border:1px solid var(--line); padding:10px 12px; border-radius:10px; cursor:pointer}
@@ -144,8 +144,8 @@ footer{max-width:1600px; margin:22px auto 50px; padding:0 18px; color:#5c6b9b; f
 <main>
   <aside>
     <div class="nav">
-      <!-- Reordered: Framework â†’ Strategies â†’ Glossary -->
-      <button class="active" data-view="framework">Framework</button>
+      <!-- Reordered: Map â†’ Strategies â†’ Glossary -->
+      <button class="active" data-view="map">Framework</button>
       <button data-view="strategies">Strategies</button>
       <button data-view="georgia">Georgia</button>
       <button data-view="glossary">Glossary</button>
@@ -178,8 +178,8 @@ footer{max-width:1600px; margin:22px auto 50px; padding:0 18px; color:#5c6b9b; f
   </aside>
 
   <section>
-    <!-- FRAMEWORK VIEW -->
-    <div id="view-framework" class="section active">
+    <!-- MAP VIEW -->
+    <div id="view-map" class="section active">
       <div class="grid" id="grid"><!-- columns built by JS --></div>
       <div class="panel" style="margin-top:14px">
         <strong>About this view.</strong>
@@ -189,7 +189,7 @@ footer{max-width:1600px; margin:22px auto 50px; padding:0 18px; color:#5c6b9b; f
 
     <!-- STRATEGIES VIEW -->
     <div id="view-strategies" class="section">
-      <div class="panel alert">Strategies describe <em>how</em> money moves for impact. Each strategy nests stakeholders from the Framework and includes detailed, step-by-step examples you can reuse in workshops. Use the â€œDownload Strategy Briefâ€ to export all examples for printing.</div>
+      <div class="panel alert">Strategies describe <em>how</em> money moves for impact. Each strategy nests stakeholders from the Map and includes detailed, step-by-step examples you can reuse in workshops. Use the Download Strategy Brief to export all examples for printing.</div>
       <div id="strategiesList"></div>
     </div>
 
@@ -202,17 +202,15 @@ footer{max-width:1600px; margin:22px auto 50px; padding:0 18px; color:#5c6b9b; f
         
         <div class="ga-stats" id="gaStats"></div>
         
-        <div class="embedwrap" style="margin-top:12px">
+                <div class="embedwrap" style="margin-top:12px">
           <div class="embedbar">
-            <div><strong>Georgia's Impact Investing Ecosystem</strong> – embedded from your Softr site</div>
+            <div><strong>Georgia's Impact Investing Ecosystem</strong> – embedded from Airtable</div>
             <div class="no-print">
-              <a class="btn" href="https://ga-impact-investing-ecosystem.softr.app/" target="_blank" rel="noopener">Open in new tab</a>
+              <a class="btn" href="https://airtable.com/apppRMBiQTMVEYDTI/shrRLGATY79wmHDl2" target="_blank" rel="noopener">Open in new tab</a>
             </div>
           </div>
-            <iframe class="embedframe" id="softrFrame" src="https://ga-impact-investing-ecosystem.softr.app/" title="Georgia Ecosystem"></iframe>
+            <iframe class="embedframe" id="airtableFrame" src="https://airtable.com/embed/apppRMBiQTMVEYDTI/shrRLGATY79wmHDl2" title="Georgia Ecosystem"></iframe>
         </div>
-        <div class="note">If the embedded page doesn't display due to browser restrictions, use "Open in new tab."</div>
-      </div>
     </div>
 
     <!-- GLOSSARY VIEW (now last) -->
@@ -1008,8 +1006,8 @@ var dataV10 = {
 };
 
 // ------------------ BUILD UI -------------------------------------------
-var segFramework = {}; dataV10.segments.forEach(function(s){ segFramework[s.key]=s });
-var fnFramework = {}; dataV10.functions.forEach(function(f){ fnFramework[f.key]=f });
+var segMap = {}; dataV10.segments.forEach(function(s){ segMap[s.key]=s });
+var fnMap = {}; dataV10.functions.forEach(function(f){ fnMap[f.key]=f });
 
 var grid = document.getElementById('grid');
 
@@ -1069,19 +1067,19 @@ modal.addEventListener('click', function(e){ if(e.target===modal){ modal.classLi
 function openNode(id){
   var n = dataV10.nodes.find(function(x){ return x.id===id });
   if(!n) return;
-  var seg = segFramework[n.seg];
-  var fnBadges = (n.fn||[]).Framework(function(k){ return '<span class="badge">'+fnFramework[k].label+'</span>' }).join(' ');
+  var seg = segMap[n.seg];
+  var fnBadges = (n.fn||[]).map(function(k){ return '<span class="badge">'+fnMap[k].label+'</span>' }).join(' ');
 
-  var capList = '<ul class="p">'+ (n.capacitiesLong||n.capacities||[]).framework(function(x){ return '<li>'+x+'</li>' }).join('') + '</ul>';
-  var chList  = '<ul class="p">'+ (n.challenges||[]).framework(function(x){ return '<li>'+x+'</li>' }).join('') + '</ul>';
-  var depList = (n.deps||[]).framework(function(d){
+  var capList = '<ul class="p">'+ (n.capacitiesLong||n.capacities||[]).map(function(x){ return '<li>'+x+'</li>' }).join('') + '</ul>';
+  var chList  = '<ul class="p">'+ (n.challenges||[]).map(function(x){ return '<li>'+x+'</li>' }).join('') + '</ul>';
+  var depList = (n.deps||[]).map(function(d){
     var target = dataV10.nodes.find(function(x){ return x.id===d.id });
     var label = target ? target.title : d.id;
     return '<div class="p" style="display:flex;gap:8px;align-items:flex-start;"><button class="dep" data-id="'+d.id+'">'+label+'</button><div style="color:#4a5b8c">'+(d.why||'')+'</div></div>';
   }).join('');
   var subList = (n.subcats && n.subcats.length) ?
-    '<div class="subgrid">' + n.subcats.framework(function(s){
-      var bullets = (s.bullets||[]).framework(function(b){ return '<li>'+b+'</li>' }).join('');
+    '<div class="subgrid">' + n.subcats.map(function(s){
+      var bullets = (s.bullets||[]).map(function(b){ return '<li>'+b+'</li>' }).join('');
       return '<div class="subcard"><h5>'+s.title+'</h5><div class="mini">'+(s.mini||'')+'</div><ul>'+bullets+'</ul></div>';
     }).join('') + '</div>' : '<div class="p" style="color:#6a789f">Not applicable.</div>';
 
@@ -1151,12 +1149,12 @@ function buildStrategies(){
     chips += '</div>';
 
     // Case studies
-    var cases = (s.cases||[]).framework(function(cs){
-      var steps = cs.steps.framework(function(t,i){
+    var cases = (s.cases||[]).map(function(cs){
+      var steps = cs.steps.map(function(t,i){
         return '<div class="box"><div class="step">Step '+(i+1)+'</div>'+t+'</div>';
       }).join('');
-      var tags = (cs.instruments||[]).framework(function(t){ return '<span class="badge">'+t+'</span>' }).join('');
-      var stk = (cs.stakeholders||[]).framework(function(id){
+      var tags = (cs.instruments||[]).map(function(t){ return '<span class="badge">'+t+'</span>' }).join('');
+      var stk = (cs.stakeholders||[]).map(function(id){
         var n = dataV10.nodes.find(function(x){ return x.id===id });
         return '<button class="stake" data-id="'+id+'" data-seg="'+(n?n.seg:'')+'">'+(n?n.title:id)+'</button>';
       }).join('');
@@ -1167,11 +1165,11 @@ function buildStrategies(){
     sList.appendChild(block);
   });
 
-  // click handlers to open framework nodes
+  // click handlers to open Map nodes
   sList.querySelectorAll('.stake').forEach(function(btn){
     btn.addEventListener('click', function(){
       var id = btn.getAttribute('data-id');
-      switchView('framework'); // switch to Framework tab
+      switchView('map'); // switch to Map tab
       setTimeout(function(){ openNode(id) }, 50);
       var el = grid.querySelector('.card[data-id="'+id+'"]'); if(el) el.scrollIntoView({behavior:'smooth', block:'center'});
     });
@@ -1207,9 +1205,9 @@ function buildCapitalStack(instruments){
     groups[c.tier].items.push(n);
   });
   var order = ['Senior Debt','Bonds','Assessment Finance','Subordinate/Mezz','Equity / Tax Equity','Guarantees/Grants','Contracts/PPAs','Other Tools'];
-  var html = order.filter(function(key){return groups[key]}).framework(function(key){
+  var html = order.filter(function(key){return groups[key]}).map(function(key){
     var g = groups[key];
-    return '<div style="border-left:5px solid '+g.color+';background:#f8fafc;border:1px solid #e5e7eb;border-left-color:'+g.color+';padding:8px;border-radius:8px;margin:6px 0"><strong>'+key+':</strong> '+g.items.join(' X ')+'</div>';
+    return '<div style="border-left:5px solid '+g.color+';background:#f8fafc;border:1px solid #e5e7eb;border-left-color:'+g.color+';padding:8px;border-radius:8px;margin:6px 0"><strong>'+key+':</strong> '+g.items.join(' â€¢ ')+'</div>';
   }).join('');
   return html || '<div style="color:#6B7280">Add instruments to display an illustrative stack.</div>';
 }
@@ -1263,12 +1261,12 @@ function exportStrategy(key){
   var now = new Date();
   var dateStr = now.toLocaleDateString(undefined, {year:'numeric', month:'short', day:'numeric'});
 
-  var casesHtml = (s.cases||[]).framework(function(cs, idx){
-    var steps = cs.steps.framework(function(t,i){
+  var casesHtml = (s.cases||[]).map(function(cs, idx){
+    var steps = cs.steps.map(function(t,i){
       return '<div style="border:1px solid #e5e7eb;border-radius:10px;padding:10px;margin:6px 0;background:#f7fbfb"><span style="background:#0F7938;color:#fff;border-radius:6px;padding:2px 8px;font-weight:700;margin-right:8px">Step '+(i+1)+'</span>'+t+'</div>';
     }).join('');
 
-    var instruments = (cs.instruments||[]).framework(function(x){ return '<span style="display:inline-block;margin:2px 6px 2px 0;padding:6px 10px;border-radius:999px;border:1px solid #e5e7eb;background:#fff">'+x+'</span>' }).join('');
+    var instruments = (cs.instruments||[]).map(function(x){ return '<span style="display:inline-block;margin:2px 6px 2px 0;padding:6px 10px;border-radius:999px;border:1px solid #e5e7eb;background:#fff">'+x+'</span>' }).join('');
 
     // Build dependencies (who depends on whom and why) using case stakeholders + node deps
     var depsHtml = buildDependencies(cs.stakeholders||[]);
@@ -1277,7 +1275,7 @@ function exportStrategy(key){
     var stackHtml = buildCapitalStack(cs.instruments||[]);
 
     // Stakeholders chip row
-    var stks = (cs.stakeholders||[]).framework(function(id){
+    var stks = (cs.stakeholders||[]).map(function(id){
       var n = dataV10.nodes.find(function(x){ return x.id===id }); return '<span class="chip">'+(n?n.title:id)+'</span>';
     }).join(' ');
 
@@ -1317,7 +1315,7 @@ function exportStrategy(key){
   (s.cases||[]).forEach(function(cs){
     (cs.instruments||[]).forEach(function(i){ if(instrumentIndex.indexOf(i)<0) instrumentIndex.push(i) });
   });
-  var instrumentBadges = instrumentIndex.framework(function(i){ return '<span class="chip">'+i+'</span>'; }).join(' ');
+  var instrumentBadges = instrumentIndex.map(function(i){ return '<span class="chip">'+i+'</span>'; }).join(' ');
 
   var html = '<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'+
   '<title>'+s.title+' - Strategy Brief</title>'+
@@ -1343,8 +1341,8 @@ function exportStrategy(key){
     '</div>'+
 
     '<div class="sec">'+
-      '<h2 style="font-size:18px;margin:0 0 6px">Stakeholders involved (from the Framework)</h2>'+
-      '<div>'+ (s.stakeholders||[]).framework(function(id){ var n=dataV10.nodes.find(function(x){return x.id===id}); return '<span class="chip">'+(n?n.title:id)+'</span>' }).join('') +'</div>'+
+      '<h2 style="font-size:18px;margin:0 0 6px">Stakeholders involved (from the Map)</h2>'+
+      '<div>'+ (s.stakeholders||[]).map(function(id){ var n=dataV10.nodes.find(function(x){return x.id===id}); return '<span class="chip">'+(n?n.title:id)+'</span>' }).join('') +'</div>'+
     '</div>'+
 
     '<div class="sec">'+
@@ -1384,7 +1382,7 @@ function exportStrategy(key){
 var q = document.getElementById('q');
 q.addEventListener('input', function(){
   var term = q.value.trim().toLowerCase();
-  // filter framework cards
+  // filter map cards
   grid.querySelectorAll('.card').forEach(function(card){
     var id=card.dataset.id;
     var node=dataV10.nodes.find(function(n){return n.id===id});
@@ -1443,11 +1441,11 @@ lens.addEventListener('click', function(e){
 document.getElementById('exportPrint').addEventListener('click', function(){ window.print() });
 
 function resetView(){
-  // Clear search, reset lens, show framework view
+  // Clear search, reset lens, show map view
   document.getElementById('q').value='';
   functionLens('all');
   document.querySelectorAll('.card').forEach(function(c){ c.classList.remove('dim'); c.style.display=''; });
-  switchView('framework');
+  switchView('map');
   lens.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('active') });
   lens.querySelector('.chip[data-fn="all"]').classList.add('active');
   window.scrollTo({top:0, behavior:'smooth'});
@@ -1460,7 +1458,7 @@ document.getElementById('how').addEventListener('click', function(){
   modalBody.innerHTML = ''
     + '<div class="block"><h4>Explore roles</h4><div class="p">Open any card to see <em>Description</em>, <em>Capacities</em>, <em>Challenges</em>, <em>Sub-categories</em>, and <em>Dependencies</em>. Dependency chips jump to the related stakeholder.</div></div>'
     + '<div class="block"><h4>Function Lens</h4><div class="p">Use the chips to spotlight who does <strong>Provision</strong>, <strong>Origination</strong>, <strong>Execution</strong>, or <strong>Opportunity Development</strong>.</div></div>'
-    + '<div class="block"><h4>Strategies</h4><div class="p">Open the <strong>Strategies</strong> tab to read step-by-step flows (â€œHow the money movesâ€) under each strategy-<strong>Divesting</strong>, <strong>ESG Integration & Stewardship</strong>, <strong>Thematic</strong>, and <strong>Place-Based</strong>. Click any stakeholder chip to jump back to the Framework and open its details.</div></div>'
+    + '<div class="block"><h4>Strategies</h4><div class="p">Open the <strong>Strategies</strong> tab to read step-by-step flows (â€œHow the money movesâ€) under each strategy-<strong>Divesting</strong>, <strong>ESG Integration & Stewardship</strong>, <strong>Thematic</strong>, and <strong>Place-Based</strong>. Click any stakeholder chip to jump back to the Map and open its details.</div></div>'
     + '<div class="block"><h4>Download</h4><div class="p">Use <strong>Download Strategy Brief</strong> to export a print-ready multi-case PDF using your brand font and colors. Each example includes <em>Key Steps</em>, an <em>Illustrative Capital Stack</em>, and <em>Who depends on whom (and why)</em>.</div></div>';
   modal.classList.add('open');
 });
@@ -1497,7 +1495,7 @@ function initGeorgiaTab() {
   // Populate stats with SVG icons
   var statsContainer = document.getElementById('gaStats');
   if (statsContainer) {
-    statsContainer.innerHTML = stats.framework(function(s) {
+    statsContainer.innerHTML = stats.map(function(s) {
       return '<div class="stat">' +
         '<div class="glyph">' + s.icon + '</div>' +
         '<div class="meta">' +
@@ -1516,5 +1514,6 @@ if (document.readyState === 'loading') {
   initGeorgiaTab();
 }
 </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"60173610961e406eaad04d7621959afb","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
