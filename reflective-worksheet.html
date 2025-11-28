@@ -55,55 +55,25 @@
         .container {
             max-width: 100%;
             width: 100%;
-        }
-
-        .header-frame {
-            background: linear-gradient(135deg, var(--bg-light-green) 0%, var(--bg-light-yellow) 100%);
-            padding: 45px 40px;
-            position: relative;
-        }
-
-        .header-frame::before {
-            content: '';
-            position: absolute;
-            top: -10%;
-            right: -5%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(102,180,69,0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .header-frame::after {
-            content: '';
-            position: absolute;
-            bottom: -15%;
-            left: -8%;
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(238,198,26,0.12) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
+            background: var(--white);
         }
 
         .content-wrapper {
             max-width: 900px;
             margin: 0 auto;
-            position: relative;
-            z-index: 1;
+            padding: 20px;
         }
 
         .page-title {
             font-family: 'Young Serif', serif;
-            font-size: 36px;
-            margin-bottom: 15px;
+            font-size: 32px;
+            margin-bottom: 10px;
             line-height: 1.3;
             color: var(--dark-blue);
         }
 
         .page-subtitle {
-            font-size: 18px;
+            font-size: 16px;
             line-height: 1.6;
             color: var(--text-muted);
             margin-bottom: 25px;
@@ -253,7 +223,7 @@
         .section-number {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, var(--dark-blue) 0%, #6b73c7 100%);
+            background: var(--dark-blue);
             color: var(--white);
             border-radius: 10px;
             display: flex;
@@ -455,9 +425,10 @@
 
         /* Footer Section */
         .footer-section {
-            background: linear-gradient(135deg, var(--bg-light-purple) 0%, var(--bg-light-green) 100%);
+            background: #f8f9fa;
             padding: 30px;
             border-radius: 0 0 12px 12px;
+            border-top: 2px solid var(--border-color);
         }
 
         .footer-reminder {
@@ -559,16 +530,6 @@
                 font-size: 11pt;
             }
 
-            .header-frame {
-                background: white !important;
-                padding: 20px 0;
-            }
-
-            .header-frame::before,
-            .header-frame::after {
-                display: none;
-            }
-
             .action-bar {
                 display: none;
             }
@@ -619,12 +580,12 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .header-frame {
-                padding: 25px 20px;
+            .content-wrapper {
+                padding: 15px;
             }
 
             .page-title {
-                font-size: 28px;
+                font-size: 24px;
             }
 
             .action-bar {
@@ -659,64 +620,63 @@
 </head>
 <body>
     <div class="container">
-        <div class="header-frame">
-            <div class="content-wrapper">
-                <h1 class="page-title">Impact Investing Readiness Worksheet</h1>
-                <p class="page-subtitle">
-                    Use this interactive worksheet to reflect on your foundation's readiness for impact investing. 
-                    Your responses will be saved automatically and can be exported as a PDF for sharing with your team.
-                </p>
+        <div class="content-wrapper">
+            <h1 class="page-title">Impact Investing Readiness Worksheet</h1>
+            <p class="page-subtitle">
+                Use this interactive worksheet to reflect on your foundation's readiness for impact investing. 
+                Your responses will be saved automatically and can be exported as a PDF for sharing with your team.
+            </p>
 
-                <!-- Action Buttons -->
-                <div class="action-bar">
-                    <button class="action-btn primary" onclick="exportToPDF()">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                        Export to PDF
-                    </button>
-                    <button class="action-btn secondary" onclick="saveProgress()">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-                            <polyline points="17 21 17 13 7 13 7 21"></polyline>
-                            <polyline points="7 3 7 8 15 8"></polyline>
-                        </svg>
-                        Save Progress
-                    </button>
-                    <button class="action-btn danger" onclick="clearAll()">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="3 6 5 6 21 6"></polyline>
-                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                        </svg>
-                        Clear All
-                    </button>
+            <!-- Action Buttons -->
+            <div class="action-bar">
+                <button class="action-btn primary" onclick="exportToPDF()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Export to PDF
+                </button>
+                <button class="action-btn secondary" onclick="saveProgress()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                        <polyline points="7 3 7 8 15 8"></polyline>
+                    </svg>
+                    Save Progress
+                </button>
+                <button class="action-btn danger" onclick="clearAll()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                    Clear All
+                </button>
+            </div>
+
+            <!-- Progress Indicator -->
+            <div class="progress-container">
+                <div class="progress-header">
+                    <span class="progress-label">Worksheet Completion</span>
+                    <span class="progress-percentage" id="progressPercentage">0%</span>
                 </div>
-
-                <!-- Progress Indicator -->
-                <div class="progress-container">
-                    <div class="progress-header">
-                        <span class="progress-label">Worksheet Completion</span>
-                        <span class="progress-percentage" id="progressPercentage">0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                    <div class="save-status" id="saveStatus">
-                        <span>Auto-save enabled</span>
-                    </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
                 </div>
+                <div class="save-status" id="saveStatus">
+                    <span>Auto-save enabled</span>
+                </div>
+            </div>
 
-                <!-- Worksheet Form -->
-                <form id="worksheetForm" class="worksheet-card">
-                    <!-- Section 1: Foundation Readiness Assessment -->
-                    <div class="section">
-                        <div class="section-header">
-                            <div class="section-number">1</div>
-                            <div class="section-title-group">
-                                <h2 class="section-title">Foundation Readiness Assessment</h2>
-                                <p class="section-description">Evaluate your foundation's current state of readiness for impact investing.</p>
+            <!-- Worksheet Form -->
+            <form id="worksheetForm" class="worksheet-card">
+                <!-- Section 1: Foundation Readiness Assessment -->
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-number">1</div>
+                        <div class="section-title-group">
+                            <h2 class="section-title">Foundation Readiness Assessment</h2>
+                            <p class="section-description">Evaluate your foundation's current state of readiness for impact investing.</p>
                             </div>
                         </div>
 
@@ -1081,7 +1041,6 @@
                 </form>
             </div>
         </div>
-    </div>
 
     <script>
     // Auto-save functionality
