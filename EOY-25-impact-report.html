@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSIC Year-1 Progress Report - Version 3</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gsic: {
+                            primary: '#5D4037', // Brown
+                            secondary: '#8D6E63', // Light brown
+                            accent: '#4CAF50', // Green
+                            light: '#EFEBE9', // Light beige
+                            dark: '#3E2723', // Dark brown
+                            gray: '#F5F5F5', // Light gray
+                        }
+                    },
+                    fontFamily: {
+                        'merriweather': ['Merriweather', 'serif'],
+                        'opensans': ['Open Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Merriweather', serif;
+        }
+        .section-divider {
+            height: 3px;
+            width: 60px;
+            background-color: #4CAF50;
+            margin: 0 auto 2rem auto;
+        }
+        .card {
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-gsic-light">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-6">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-gsic-primary flex items-center justify-center text-white font-bold text-xl">G</div>
+                    <div class="ml-4">
+                        <div class="text-xl font-bold text-gsic-primary font-merriweather">GSIC</div>
+                        <div class="text-xs text-gsic-secondary">Georgia Social Impact Collaborative</div>
+                    </div>
+                </div>
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-8">
+                        <li><a href="#intro" class="text-gsic-primary hover:text-gsic-accent transition-colors font-semibold">Introduction</a></li>
+                        <li><a href="#about" class="text-gsic-primary hover:text-gsic-accent transition-colors font-semibold">About</a></li>
+                        <li><a href="#listening" class="text-gsic-primary hover:text-gsic-accent transition-colors font-semibold">Listening</a></li>
+                        <li><a href="#priorities" class="text-gsic-primary hover:text-gsic-accent transition-colors font-semibold">Priorities</a></li>
+                        <li><a href="#highlights" class="text-gsic-primary hover:text-gsic-accent transition-colors font-semibold">Highlights</a></li>
+                        <li><a href="#moments" class="text-gsic-primary hover:text-gsic-accent transition-colors font-semibold">Moments</a></li>
+                    </ul>
+                </nav>
+                <button class="md:hidden text-gsic-primary" id="mobile-menu-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white shadow-md" id="mobile-menu">
+            <nav class="container mx-auto px-4 py-4">
+                <ul class="space-y-4">
+                    <li><a href="#intro" class="block text-gsic-primary hover:text-gsic-accent transition-colors">Introduction</a></li>
+                    <li><a href="#about" class="block text-gsic-primary hover:text-gsic-accent transition-colors">About GSIC</a></li>
+                    <li><a href="#listening" class="block text-gsic-primary hover:text-gsic-accent transition-colors">Listening First</a></li>
+                    <li><a href="#priorities" class="block text-gsic-primary hover:text-gsic-accent transition-colors">Strategic Priorities</a></li>
+                    <li><a href="#highlights" class="block text-gsic-primary hover:text-gsic-accent transition-colors">Year-1 Highlights</a></li>
+                    <li><a href="#moments" class="block text-gsic-primary hover:text-gsic-accent transition-colors">Coolest Moments</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative">
+        <div class="absolute inset-0 bg-gsic-primary opacity-90 z-10"></div>
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMSI+PC9yZWN0Pgo8L3N2Zz4=')] z-0"></div>
+        <div class="container mx-auto px-4 py-32 md:py-48 relative z-20">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center">
+                    <span class="inline-block bg-gsic-accent text-white text-sm font-bold px-4 py-2 rounded-md mb-6">2023-2024</span>
+                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 font-merriweather">Year One Progress Report</h1>
+                    <p class="text-xl text-white opacity-90 mb-10">Building a stronger Georgia through collaborative social impact</p>
+                    <a href="#intro" class="inline-block bg-white text-gsic-primary px-8 py-3 rounded-md font-bold hover:bg-gsic-accent hover:text-white transition-colors">
+                        Read the Report
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section id="intro" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-gsic-primary mb-4 font-merriweather">Introduction</h2>
+                    <div class="section-divider"></div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row gap-16 items-center">
+                    <div class="md:w-1/3">
+                        <div class="bg-gsic-light p-8 rounded-lg text-center">
+                            <div class="w-24 h-24 rounded-full bg-gsic-primary mx-auto mb-6 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gsic-primary mb-2 font-merriweather">Executive Director</h3>
+                            <p class="text-gsic-secondary">Georgia Social Impact Collaborative</p>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3">
+                        <div class="bg-gsic-light p-8 rounded-lg border-l-4 border-gsic-accent">
+                            <blockquote class="text-lg text-gsic-primary">
+                                <p class="mb-4">[Your statement as Executive Director will go here. This is a placeholder for your personal reflection on the first year of leadership at GSIC, highlighting key achievements, challenges overcome, and your vision for the organization.]</p>
+                                <p class="mb-4">[Continue your statement here with additional insights about the journey and the impact GSIC has made in its first year under your leadership.]</p>
+                                <p>[Conclude with forward-looking statements and expressions of gratitude to partners and stakeholders.]</p>
+                            </blockquote>
+                            <div class="mt-6 text-right">
+                                <p class="font-semibold text-gsic-primary">— Executive Director, GSIC</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About GSIC Section -->
+    <section id="about" class="py-20 bg-gsic-gray">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-gsic-primary mb-4 font-merriweather">So, What is GSIC?</h2>
+                    <div class="section-divider"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-lg shadow-md p-8">
+                        <h3 class="text-2xl font-semibold text-gsic-primary mb-6 font-merriweather">Our Model</h3>
+                        <p class="text-gray-700 mb-4">[Placeholder for description of GSIC's operational model, approach to social impact, and organizational structure.]</p>
+                        <p class="text-gray-700 mb-4">[Placeholder for explanation of how GSIC collaborates with partners and stakeholders across Georgia.]</p>
+                        <p class="text-gray-700">[Placeholder for information about GSIC's unique value proposition in the social impact ecosystem.]</p>
+                    </div>
+                    
+                    <div class="bg-gsic-primary text-white rounded-lg shadow-md p-8">
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 font-merriweather">Our Mission</h3>
+                            <p class="italic">[Placeholder for GSIC's mission statement]</p>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 font-merriweather">Our Vision</h3>
+                            <p class="italic">[Placeholder for GSIC's vision statement]</p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-4 font-merriweather">Our Values</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-center">
+                                    <div class="w-6 h-6 rounded-full bg-gsic-accent flex items-center justify-center mr-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </div>
+                                    [Value 1]
+                                </li>
+                                <li class="flex items-center">
+                                    <div class="w-6 h-6 rounded-full bg-gsic-accent flex items-center justify-center mr-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </div>
+                                    [Value 2]
+                                </li>
+                                <li class="flex items-center">
+                                    <div class="w-6 h-6 rounded-full bg-gsic-accent flex items-center justify-center mr-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </div>
+                                    [Value 3]
+                                </li>
+                                <li class="flex items-center">
+                                    <div class="w-6 h-6 rounded-full bg-gsic-accent flex items-center justify-center mr-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </div>
+                                    [Value 4]
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Listening First Section -->
+    <section id="listening" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-gsic-primary mb-4 font-merriweather">Listening First, Then Rebuilding</h2>
+                    <div class="section-divider"></div>
+                    <p class="text-gray-700 max-w-3xl mx-auto">[Placeholder for introduction to GSIC's approach of listening to community needs before taking action.]</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                    <!-- Conversation Theme 1 -->
+                    <div class="card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="bg-gsic-accent h-2"></div>
+                        <div class="p-8">
+                            <div class="flex items-center mb-6">
+                                <div class="bg-gsic-accent rounded-full p-3 mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl font-semibold text-gsic-primary font-merriweather">Theme 1</h3>
+                            </div>
+                            <p class="text-gray-700">[Placeholder for description of key conversation theme 1 that emerged from community listening sessions.]</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Conversation Theme 2 -->
+                    <div class="card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="bg-gsic-secondary h-2"></div>
+                        <div class="p-8">
+                            <div class="flex items-center mb-6">
+                                <div class="bg-gsic-secondary rounded-full p-3 mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl font-semibold text-gsic-primary font-merriweather">Theme 2</h3>
+                            </div>
+                            <p class="text-gray-700">[Placeholder for description of key conversation theme 2 that emerged from community listening sessions.]</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Conversation Theme 3 -->
+                    <div class="card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="bg-gsic-primary h-2"></div>
+                        <div class="p-8">
+                            <div class="flex items-center mb-6">
+                                <div class="bg-gsic-primary rounded-full p-3 mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl font-semibold text-gsic-primary font-merriweather">Theme 3</h3>
+                            </div>
+                            <p class="text-gray-700">[Placeholder for description of key conversation theme 3 that emerged from community listening sessions.]</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Conversation Theme 4 -->
+                    <div class="card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="bg-gsic-dark h-2"></div>
+                        <div class="p-8">
+                            <div class="flex items-center mb-6">
+                                <div class="bg-gsic-dark rounded-full p-3 mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl font-semibold text-gsic-primary font-merriweather">Theme 4</h3>
+                            </div>
+                            <p class="text-gray-700">[Placeholder for description of key conversation theme 4 that emerged from community listening sessions.]</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gsic-light p-8 rounded-lg border-l-4 border-gsic-accent">
+                    <h3 class="text-2xl font-semibold text-gsic-primary mb-6 font-merriweather">How We're Responding</h3>
+                    <p class="text-gray-700 mb-4">[Placeholder for description of how GSIC is using these insights to shape its work and rebuild community connections.]</p>
+                    <p class="text-gray-700">[Placeholder for specific actions taken in response to community feedback.]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategic Priorities Section -->
+    <section id="priorities" class="py-20 bg-gsic-primary text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold mb-4 font-merriweather">Our Three Strategic Priorities</h2>
+                    <div class="section-divider bg-white"></div>
+                    <p class="text-gsic-light max-w-3xl mx-auto">[Placeholder for introduction to GSIC's strategic priorities for the future.]</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Priority 1 -->
+                    <div class="card bg-white text-gsic-primary rounded-lg shadow-md overflow-hidden">
+                        <div class="bg-gsic-accent h-2"></div>
+                        <div class="p-8">
+                            <div class="flex justify-center mb-8">
+                                <div class="w-20 h-20 rounded-full bg-gsic-accent flex items-center justify-center text-3xl font-bold text-white font-merriweather">1</div>
+                            </div>
+                            <h3 class="text-2xl font-semibold mb-6 text-center font-merriweather">Priority One</h3>
+                            <p class="text-gray-700 text-center mb-10">[Placeholder for description of strategic priority 1 and its importance to GSIC's mission.]</p>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm">Progress</span>
+                                    <span class="text-sm">65%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill bg-gsic-accent" style="width: 65%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Priority 2 -->
+                    <div class="card bg-white text-gsic-primary rounded-lg shadow-md overflow-hidden">
+                        <div class="bg-gsic-secondary h-2"></div>
+                        <div class="p-8">
+                            <div class="flex justify-center mb-8">
+                                <div class="w-20 h-20 rounded-full bg-gsic-secondary flex items-center justify-center text-3xl font-bold text-white font-merriweather">2</div>
+                            </div>
+                            <h3 class="text-2xl font-semibold mb-6 text-center font-merriweather">Priority Two</h3>
+                            <p class="text-gray-700 text-center mb-10">[Placeholder for description of strategic priority 2 and its importance to GSIC's mission.]</p>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm">Progress</span>
+                                    <span class="text-sm">40%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill bg-gsic-secondary" style="width: 40%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Priority 3 -->
+                    <div class="card bg-white text-gsic-primary rounded-lg shadow-md overflow-hidden">
+                        <div class="bg-gsic-primary h-2"></div>
+                        <div class="p-8">
+                            <div class="flex justify-center mb-8">
+                                <div class="w-20 h-20 rounded-full bg-gsic-primary flex items-center justify-center text-3xl font-bold text-white font-merriweather">3</div>
+                            </div>
+                            <h3 class="text-2xl font-semibold mb-6 text-center font-merriweather">Priority Three</h3>
+                            <p class="text-gray-700 text-center mb-10">[Placeholder for description of strategic priority 3 and its importance to GSIC's mission.]</p>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm">Progress</span>
+                                    <span class="text-sm">25%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill bg-gsic-primary" style="width: 25%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-20 text-center">
+                    <div class="inline-block bg-white bg-opacity-10 p-8 rounded-lg max-w-3xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gsic-accent mx-auto mb-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                        </svg>
+                        <p class="italic text-2xl font-merriweather">"[Placeholder for a quote about GSIC's strategic vision for the future.]"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Year-1 Highlights Section -->
+    <section id="highlights" class="py-20 bg-gsic-gray">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-gsic-primary mb-4 font-merriweather">Highlights from Year One</h2>
+                    <div class="section-divider"></div>
+                    <p class="text-gray-700 max-w-3xl mx-auto">[Placeholder for introduction to GSIC's key accomplishments during the first year.]</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Highlight 1 -->
+                    <div class="card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="flex flex-col md:flex-row">
+                            <div class="md:w-2/5 bg-gsic-accent p-8 flex items-center justify-center">
+                                <div class="text-center">
+                                    <div class="text-5xl font-bold text-white mb-2 font-merriweather">XX</div>
+                                    <div class="text-white text-sm uppercase tracking-wider">Partners Engaged</div>
+                                </div>
+                            </div>
+                            <div class="md:w-3/5 p-8">
+                                <h3 class="text-2xl font-semibold text-gsic-primary mb-4 font-merriweather">Partnership Building</h3>
+                                <p class="text-gray-700">[Placeholder for description of partnerships formed and their impact on GSIC's work.]</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Highlight 2 -->
+                    <div class="card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="flex flex-col md:flex-row">
+                            <div class="md:w-2/5 bg-gsic-secondary p-8 flex items-center justify-center">
+                                <div class="text-center">
+                                    <div class="text-5xl font-bold text-white mb-2 font-merriweather">$XXK</div>
+                                    <div class="text-white text-sm uppercase tracking-wider">Funds Mobilized</div>
+                                </div>
+                            </div>
+                            <div class="md:w-3/5 p-8">
+                                <h3 class="text-2xl font-semibold text-gsic-primary mb-4 font-merriweather">Resource Mobilization</h3>
+                                <p class="text-gray-700">[Placeholder for description of funding secured and how it's being used to advance GSIC's mission.]</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Highlight 3 -->
+                    <div class="card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="flex flex-col md:flex-row">
+                            <div class="md:w-2/5 bg-gsic-primary p-8 flex items-center justify-center">
+                                <div class="text-center">
+                                    <div class="text-5xl font-bold text-white mb-2 font-merriweather">XX</div>
+                                    <div class="text-white text-sm uppercase tracking-wider">Communities Served</div>
+                                </div>
+                            </div>
+                            <div class="md:w-3/5 p-8">
+                                <h3 class="text-2xl font-semibold text-gsic-primary mb-4 font-merriweather">Community Impact</h3>
+                                <p class="text-gray-700">[Placeholder for description of communities served and the impact of GSIC's work on these communities.]</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Highlight 4 -->
+                    <div class="card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="flex flex-col md:flex-row">
+                            <div class="md:w-2/5 bg-gsic-dark p-8 flex items-center justify-center">
+                                <div class="text-center">
+                                    <div class="text-5xl font-bold text-white mb-2 font-merriweather">XX</div>
+                                    <div class="text-white text-sm uppercase tracking-wider">Initiatives Launched</div>
+                                </div>
+                            </div>
+                            <div class="md:w-3/5 p-8">
+                                <h3 class="text-2xl font-semibold text-gsic-primary mb-4 font-merriweather">Program Development</h3>
+                                <p class="text-gray-700">[Placeholder for description of new programs and initiatives launched by GSIC.]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coolest Moments Section -->
+    <section id="moments" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-gsic-primary mb-4 font-merriweather">The Coolest Moments of My Year-1 Leadership</h2>
+                    <div class="section-divider"></div>
+                    <p class="text-gray-700 max-w-3xl mx-auto">[Placeholder for introduction to personal stories and memorable moments from your first year as Executive Director.]</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Moment 1 -->
+                    <div class="card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="relative">
+                            <div class="h-48 bg-gsic-light flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-gsic-primary opacity-30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </div>
+                            <div class="absolute top-4 left-4 bg-gsic-accent text-white text-xs font-bold px-3 py-1 rounded-md">Spring 2023</div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-semibold text-gsic-primary mb-4 font-merriweather">Moment Title 1</h3>
+                            <p class="text-gray-700">[Placeholder for description of a memorable moment from your first year as Executive Director.]</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Moment 2 -->
+                    <div class="card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="relative">
+                            <div class="h-48 bg-gsic-light flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-gsic-primary opacity-30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                            </div>
+                            <div class="absolute top-4 left-4 bg-gsic-accent text-white text-xs font-bold px-3 py-1 rounded-md">Summer 2023</div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-semibold text-gsic-primary mb-4 font-merriweather">Moment Title 2</h3>
+                            <p class="text-gray-700">[Placeholder for description of a memorable moment from your first year as Executive Director.]</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Moment 3 -->
+                    <div class="card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="relative">
+                            <div class="h-48 bg-gsic-light flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-gsic-primary opacity-30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                </svg>
+                            </div>
+                            <div class="absolute top-4 left-4 bg-gsic-accent text-white text-xs font-bold px-3 py-1 rounded-md">Fall 2023</div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-semibold text-gsic-primary mb-4 font-merriweather">Moment Title 3</h3>
+                            <p class="text-gray-700">[Placeholder for description of a memorable moment from your first year as Executive Director.]</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Moment 4 -->
+                    <div class="card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="relative">
+                            <div class="h-48 bg-gsic-light flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-gsic-primary opacity-30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                                </svg>
+                            </div>
+                            <div class="absolute top-4 left-4 bg-gsic-accent text-white text-xs font-bold px-3 py-1 rounded-md">Winter 2024</div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-semibold text-gsic-primary mb-4 font-merriweather">Moment Title 4</h3>
+                            <p class="text-gray-700">[Placeholder for description of a memorable moment from your first year as Executive Director.]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-20 bg-gsic-primary text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6 font-merriweather">Join Us in Year Two</h2>
+                <p class="text-xl mb-10 text-gsic-light">[Placeholder for call to action inviting partners to continue collaborating with GSIC in the coming year.]</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-6">
+                    <a href="#" class="bg-gsic-accent text-white px-8 py-4 rounded-md font-bold hover:bg-opacity-90 transition-colors">Contact Us</a>
+                    <a href="#" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-md font-bold hover:bg-white hover:text-gsic-primary transition-colors">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gsic-dark text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-10">
+                    <div class="mb-8 md:mb-0">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-gsic-accent flex items-center justify-center text-white font-bold text-xl mr-3">G</div>
+                            <div>
+                                <div class="text-xl font-bold font-merriweather">GSIC</div>
+                                <div class="text-xs text-gsic-light">Georgia Social Impact Collaborative</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-gsic-accent transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-gsic-accent transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.054 10.054 0 01-3.127 1.195 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-gsic-accent transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="border-t border-white border-opacity-10 pt-8 text-center text-sm text-gsic-light">
+                    <p>&copy; 2024 Georgia Social Impact Collaborative. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const headerHeight = 80; // Adjust based on your header height
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a96baf545b8675f',t:'MTc2NDk3MTEyNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
