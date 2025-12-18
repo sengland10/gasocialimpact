@@ -1,0 +1,50 @@
+/* CSS Variables */
+:root {
+    /* Colors */
+    --primary-green: #149a49;
+    --primary-purple: #4750a2;
+    --accent-green: #66b445;
+    --accent-orange: #f15922;
+    --accent-yellow: #eec61a;
+    
+    /* Background Colors */
+    --bg-white: #fff;
+    --bg-light-green: #e8f8eb;
+    --bg-light-purple: #dde0fe;
+    --bg-light-orange: #fff1d3;
+    
+    /* Text Colors */
+    --text-dark: #333;
+    --text-medium: #666;
+    --text-light: #888;
+    
+    /* Border Colors */
+    --border-color: #e0e0e0;
+    
+    /* Font Families */
+    --font-serif: 'Young Serif', serif;
+    --font-sans: 'Familjen Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    /* Spacing */
+    --spacing-xs: 8px;
+    --spacing-sm: 12px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    --spacing-xl: 50px;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 15px;
+    --radius-xl: 20px;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.4s ease;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 5px 20px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
+}

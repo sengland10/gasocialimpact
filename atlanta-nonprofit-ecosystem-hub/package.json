@@ -1,0 +1,38 @@
+{
+  "name": "atlanta-nonprofit-ecosystem-hub",
+  "version": "1.0.0",
+  "description": "A comprehensive web application providing resources, analysis, and tools for nonprofits and funders in the Atlanta/Georgia nonprofit capital ecosystem",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "python -m http.server 8000",
+    "dev": "python -m http.server 8000"
+  },
+  "keywords": [
+    "nonprofit",
+    "capital",
+    "ecosystem",
+    "atlanta",
+    "georgia",
+    "financial-health",
+    "assessment",
+    "resources"
+  ],
+  "author": "Georgia Social Impact Collaborative",
+  "license": "UNLICENSED",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sengland10/gasocialimpact"
+  },
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ]
+}
