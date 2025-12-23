@@ -1,83 +1,147 @@
-# Georgia Social Impact Collaborative - Tools & Resources
+# Impact Ecosystem Navigator
 
-This repository contains interactive web applications for the Georgia Social Impact Collaborative (GSIC).
+An interactive web application for exploring Georgia's impact investing ecosystem, featuring comprehensive information about organizations, strategies, and resources.
 
-## Live Applications
-
-- **Impact Ecosystem Navigator**: Explore 100+ organizations across Georgia's impact ecosystem
-- **Atlanta Nonprofit Hub**: Capital ecosystem resources, tools, and assessments for nonprofits
-
-## Deployment
-
-This repository is deployed via Netlify with automatic deployments on every push to `main`.
-
-### Application URLs
-- Impact Ecosystem Navigator: `/ecosystem-navigator`
-- Atlanta Nonprofit Hub: `/nonprofit-hub`
-
-## Development
+## 🚀 Quick Start
 
 ### Local Development
-Start a local server for testing:
 ```bash
-# Impact Navigator
+# Navigate to the app directory
 cd impact-ecosystem-navigator-app
-python -m http.server 8002
 
-# Nonprofit Hub
-cd atlanta-nonprofit-ecosystem-hub
+# Start a local server
 python -m http.server 8000
+
+# Open http://localhost:8000 in your browser
 ```
 
-### Making Updates
-1. Edit the application files in VS Code
-2. Test locally using the development server
-3. Commit your changes: `git add . && git commit -m "Your update description"`
-4. Push to GitHub: `git push origin main`
-5. Netlify automatically deploys in 30-60 seconds
-
-## Repository Structure
+## 📁 Repository Structure
 
 ```
 /
-├── impact-ecosystem-navigator-app/    # Impact Ecosystem Navigator
-│   ├── index.html
-│   ├── assets/
-│   └── README.md
-├── atlanta-nonprofit-ecosystem-hub/   # Atlanta Nonprofit Hub
-│   ├── index.html
-│   ├── assets/
-│   └── README.md
-├── archive/                           # Original standalone files
-└── netlify.toml                       # Deployment configuration
+├── impact-ecosystem-navigator-app/    # Main application
+│   ├── index.html                     # Complete single-file app
+│   ├── package.json                   # Project metadata
+│   ├── README.md                      # App documentation
+│   └── assets/                        # Ready for modularization
+│       ├── css/
+│       ├── js/
+│       └── images/
+└── archive/                           # Historical versions
+    └── impact-ecosystem-navigator/
+        └── impact-ecosystem-navigator.html
 ```
 
-## Embedding on Your Website
+## ✨ Features
 
-Use these iframes to embed the applications:
+### Core Functionality
+- **Framework View** - Interactive stakeholder mapping across 5 segments
+- **Strategies Explorer** - 20+ impact investing strategies with case studies
+- **Georgia Tab** - State-specific ecosystem data and organizations
+- **Glossary** - Impact investing terminology and tools
 
-### Impact Ecosystem Navigator
-```html
-<iframe 
-  src="https://your-site.netlify.app/ecosystem-navigator" 
-  width="100%" 
-  height="800px"
-  frameborder="0"
-  title="Impact Ecosystem Navigator">
-</iframe>
+### Interactive Elements
+- ✅ Search and filter functionality
+- ✅ Function lens (Capital Provision, Origination, Execution, Opportunity)
+- ✅ Detailed stakeholder cards with dependencies
+- ✅ Strategy case studies with step-by-step examples
+- ✅ Embedded Airtable integration for Georgia data
+- ✅ Responsive design
+
+## 📊 Content Overview
+
+### Stakeholder Segments (5)
+1. **Capital Supply** - Institutional investors, foundations, government
+2. **Capital Aggregators** - Fund managers, CDFIs, DFIs
+3. **Capital Seekers** - Social enterprises, community orgs, developers
+4. **Capital Enablers** - TA providers, professional services
+5. **Infrastructure** - Impact measurement, policy, technology platforms
+
+### Functions (4)
+- Capital Provision
+- Deal Origination & Sourcing
+- Evaluation, Structuring & Execution
+- Opportunity Development
+
+### Strategies Include
+- Divesting (Exclusions) + Reallocation
+- ESG Integration & Stewardship
+- Thematic Impact Investing
+- Place-Based Impact Investing
+- And more...
+
+## 🛠️ Technology Stack
+
+- **Pure HTML/CSS/JavaScript** - No build process required
+- **Self-contained** - All code in single file for portability
+- **Airtable Integration** - Live data for Georgia ecosystem
+- **Responsive Design** - Works on desktop and mobile
+
+## 📝 Making Changes
+
+### Update Content
+1. Open `impact-ecosystem-navigator-app/index.html`
+2. Find the relevant section (clearly marked with HTML comments)
+3. Edit the content
+4. Save and refresh browser
+
+### Modify Data
+The data structure is in JavaScript at the bottom of index.html:
+```javascript
+var dataV10 = {
+  functions: [...],
+  segments: [...],
+  nodes: [...],
+  strategies: [...],
+  glossary: [...]
+}
 ```
 
-### Atlanta Nonprofit Hub
-```html
-<iframe 
-  src="https://your-site.netlify.app/nonprofit-hub" 
-  width="100%" 
-  height="800px"
-  frameborder="0"
-  title="Atlanta Nonprofit Hub">
-</iframe>
+### Customize Styling
+CSS variables are defined at the top of the `<style>` section:
+```css
+:root{
+  --brand-dk:#1E2951; 
+  --brand-grn:#0F7938; 
+  --brand-ylw:#D4AF37; 
+  --brand-lbl:#6FBFB3;
+}
 ```
 
-## Support
+## 🎯 Use Cases
 
-For questions or issues, contact the GSIC team.
+- **Ecosystem Mapping** - Understand stakeholder roles and relationships
+- **Strategy Planning** - Learn from detailed case studies
+- **Partnership Development** - Identify organizations and their functions
+- **Education** - Teach impact investing concepts and terminology
+- **Research** - Analyze Georgia's impact ecosystem
+
+## 📖 Documentation
+
+- See `impact-ecosystem-navigator-app/README.md` for detailed app documentation
+- The app includes inline help text and tooltips
+- All stakeholder cards include detailed information about:
+  - Key functions
+  - Capacities
+  - Challenges
+  - Dependencies
+
+## 🔄 Future Enhancements
+
+Potential improvements for future versions:
+- Extract CSS to modular files
+- Separate JavaScript into modules
+- Move data to external JSON files
+- Add backend API integration
+- Implement user accounts and saved filters
+- Enhanced data visualization
+
+## 📞 Support
+
+For questions or issues with the Impact Ecosystem Navigator, contact the Georgia Social Impact Collaborative team.
+
+---
+
+**Version**: 10.0  
+**Last Updated**: December 2024  
+**Maintained by**: Georgia Social Impact Collaborative
