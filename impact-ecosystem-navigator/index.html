@@ -3,141 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impact Investing Ecosystem - Explorer</title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="assets/css/variables.css">
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/layout.css">
-    <link rel="stylesheet" href="assets/css/components.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
+    <title>Georgia Impact Ecosystem Navigator</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="wrap">
-            <div class="brand" aria-hidden="true"></div>
-            <div class="kicker">Impact Investing Ecosystem</div>
-            <div class="controls">
-                <button class="btn primary" id="resetView">Reset View</button>
-                <button class="btn" id="exportPrint">Print</button>
-                <button class="btn ghost" id="how">How to</button>
-            </div>
+        <div class="header-content">
+            <h1>Georgia Impact Ecosystem Navigator</h1>
+            <p class="subtitle">Mapping Social Impact Strategies Across Georgia</p>
         </div>
     </header>
 
+    <!-- Navigation -->
+    <nav id="mainNav">
+        <ul>
+            <li><a href="#" data-section="map" class="active">Interactive Map</a></li>
+            <li><a href="#" data-section="strategies">Strategy Library</a></li>
+            <li><a href="#" data-section="georgia">Georgia Context</a></li>
+            <li><a href="#" data-section="glossary">Glossary</a></li>
+        </ul>
+    </nav>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search strategies, stakeholders, or terms...">
+        <div id="searchResults" class="search-results"></div>
+    </div>
+
     <!-- Main Content -->
     <main>
-        <!-- Sidebar -->
-        <aside>
-            <!-- Navigation -->
-            <div class="nav">
-                <button class="active" data-view="map">Framework</button>
-                <button data-view="strategies">Strategies</button>
-                <button data-view="georgia">Georgia</button>
-                <button data-view="glossary">Glossary</button>
+        <!-- Map Section -->
+        <section id="map" class="content-section active">
+            <div class="section-header">
+                <h2>Interactive Stakeholder Map</h2>
+                <p>Explore how different stakeholders interact within the Georgia social impact ecosystem</p>
             </div>
+            <div id="stakeholderMap"></div>
+            <div class="map-legend">
+                <h3>Stakeholder Types</h3>
+                <div class="legend-items" id="legendItems"></div>
+            </div>
+        </section>
 
-            <!-- Search -->
-            <div class="search">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-                <input id="q" placeholder="Search names, roles, capacities, challenges..." aria-label="Search">
+        <!-- Strategies Section -->
+        <section id="strategies" class="content-section">
+            <div class="section-header">
+                <h2>Strategy Library</h2>
+                <p>Browse evidence-based strategies for social impact</p>
             </div>
+            <div class="filters">
+                <select id="categoryFilter">
+                    <option value="">All Categories</option>
+                </select>
+                <select id="stakeholderFilter">
+                    <option value="">All Stakeholders</option>
+                </select>
+            </div>
+            <div id="strategiesGrid" class="strategies-grid"></div>
+        </section>
 
-            <!-- Function Lens -->
-            <div class="lens" id="lens">
-                <div class="chip active" data-fn="all">All functions</div>
-                <div class="chip" data-fn="provision">Capital Provision</div>
-                <div class="chip" data-fn="origination">Deal Origination</div>
-                <div class="chip" data-fn="execution">Evaluation & Execution</div>
-                <div class="chip" data-fn="opportunity">Opportunity Development</div>
+        <!-- Georgia Context Section -->
+        <section id="georgia" class="content-section">
+            <div class="section-header">
+                <h2>Georgia Context</h2>
+                <p>Understanding Georgia's unique social impact landscape</p>
             </div>
+            <div id="georgiaContent" class="georgia-content"></div>
+        </section>
 
-            <!-- Legend -->
-            <div class="legend">
-                <div><span class="dot a1"></span> Capital Supply</div>
-                <div><span class="dot a2"></span> Aggregators</div>
-                <div><span class="dot a3"></span> Seekers</div>
-                <div><span class="dot a4"></span> Enablers</div>
-                <div><span class="dot a5"></span> Infrastructure</div>
+        <!-- Glossary Section -->
+        <section id="glossary" class="content-section">
+            <div class="section-header">
+                <h2>Glossary</h2>
+                <p>Key terms and concepts in social impact work</p>
             </div>
-        </aside>
-
-        <!-- Content Area -->
-        <article>
-            <!-- Framework/Map View -->
-            <div id="view-map" class="section active">
-                <div class="grid" id="grid"><!-- columns built by JS --></div>
-                <div class="panel" style="margin-top:14px">
-                    <h4 style="margin:0 0 8px">What is this?</h4>
-                    <p style="color:#1e2951">A <strong>live reference</strong> for facilitating strategy sessions and stakeholder workshops. Each role is a Lego brick—you combine them to build flows. Open any card for detailed breakdowns, then use the <strong>Strategies</strong> tab to see complete examples.</p>
-                </div>
+            <div class="glossary-filters">
+                <input type="text" id="glossarySearch" placeholder="Search glossary terms...">
             </div>
-
-            <!-- Strategies View -->
-            <div id="view-strategies" class="section">
-                <div class="panel alert">Strategies describe <em>how</em> money moves for impact. Each strategy nests stakeholders from the Map and includes detailed, step-by-step examples you can reuse in workshops. Use the Download Strategy Brief to export all examples for printing.</div>
-                <div id="strategiesList"></div>
-            </div>
-
-            <!-- Georgia View -->
-            <div id="view-georgia" class="section">
-                <div class="panel">
-                    <div class="ga-map">
-                        <h3 style="margin:0 0 12px">Georgia Impact Capital Ecosystem</h3>
-                        <p style="margin-bottom:12px">Below is a live, embedded Airtable base showing all stakeholders across Georgia. You can filter, sort, and explore organizations by segment, location, and role.</p>
-                    </div>
-                    <div class="ga-stats" id="gaStats"></div>
-                    <div class="embedwrap" style="margin-top:12px">
-                        <div class="embedbar">
-                            <div class="embed-title">Live Georgia Ecosystem Database</div>
-                            <div class="no-print">
-                                <a class="btn" href="https://airtable.com/apppRMBiQTMVEYDTI/shrRLGATY79wmHDl2" target="_blank" rel="noopener">Open in new tab</a>
-                            </div>
-                        </div>
-                        <iframe class="embedframe" id="airtableFrame" src="https://airtable.com/embed/apppRMBiQTMVEYDTI/shrRLGATY79wmHDl2" title="Georgia Ecosystem"></iframe>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Glossary View -->
-            <div id="view-glossary" class="section">
-                <div class="panel" id="glossary"></div>
-            </div>
-        </article>
+            <div id="glossaryList" class="glossary-list"></div>
+        </section>
     </main>
 
-    <!-- Detail Modal -->
-    <div class="details" id="modal">
-        <div class="sheet">
-            <header>
-                <h2 id="modalTitle">Detail</h2>
-                <button class="close" id="closeModal">×</button>
-            </header>
-            <div class="content" id="modalBody"></div>
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalBody"></div>
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        <p><strong>Keyboard shortcuts:</strong> Press <span class="kbd">Esc</span> to close detail panel. Use <span class="kbd">Tab</span> to navigate between cards and filters.</p>
+        <div class="footer-content">
+            <p>&copy; 2024 Georgia Impact Ecosystem Navigator</p>
+            <p>A tool for understanding and navigating social impact strategies</p>
+        </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="assets/js/config.js"></script>
-    <script src="assets/js/data/stakeholders.js"></script>
-    <script src="assets/js/data/strategies.js"></script>
-    <script src="assets/js/data/glossary.js"></script>
-    <script src="assets/js/navigation.js"></script>
-    <script src="assets/js/map.js"></script>
-    <script src="assets/js/strategies.js"></script>
-    <script src="assets/js/georgia.js"></script>
-    <script src="assets/js/glossary.js"></script>
-    <script src="assets/js/search.js"></script>
-    <script src="assets/js/modal.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script type="module" src="assets/js/main.js"></script>
 </body>
 </html>
