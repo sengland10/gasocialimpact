@@ -3,107 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Georgia Impact Ecosystem Navigator</title>
+    <title>Impact Ecosystem Navigator</title>
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="header-content">
-            <h1>Georgia Impact Ecosystem Navigator</h1>
-            <p class="subtitle">Mapping Social Impact Strategies Across Georgia</p>
-        </div>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Impact Ecosystem Navigator</h1>
+            <p class="subtitle">Mapping Georgia's Social Impact Landscape</p>
+        </header>
 
-    <!-- Navigation -->
-    <nav id="mainNav">
-        <ul>
-            <li><a href="#" data-section="map" class="active">Interactive Map</a></li>
-            <li><a href="#" data-section="strategies">Strategy Library</a></li>
-            <li><a href="#" data-section="georgia">Georgia Context</a></li>
-            <li><a href="#" data-section="glossary">Glossary</a></li>
-        </ul>
-    </nav>
-
-    <!-- Search Bar -->
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search strategies, stakeholders, or terms...">
-        <div id="searchResults" class="search-results"></div>
-    </div>
-
-    <!-- Main Content -->
-    <main>
-        <!-- Map Section -->
-        <section id="map" class="content-section active">
-            <div class="section-header">
-                <h2>Interactive Stakeholder Map</h2>
-                <p>Explore how different stakeholders interact within the Georgia social impact ecosystem</p>
-            </div>
-            <div id="stakeholderMap"></div>
-            <div class="map-legend">
-                <h3>Stakeholder Types</h3>
-                <div class="legend-items" id="legendItems"></div>
-            </div>
-        </section>
-
-        <!-- Strategies Section -->
-        <section id="strategies" class="content-section">
-            <div class="section-header">
-                <h2>Strategy Library</h2>
-                <p>Browse evidence-based strategies for social impact</p>
-            </div>
-            <div class="filters">
-                <select id="categoryFilter">
-                    <option value="">All Categories</option>
-                </select>
-                <select id="stakeholderFilter">
-                    <option value="">All Stakeholders</option>
+        <div class="controls">
+            <div class="filter-group">
+                <label for="regionFilter">Region:</label>
+                <select id="regionFilter">
+                    <option value="all">All Regions</option>
+                    <option value="metro-atlanta">Metro Atlanta</option>
+                    <option value="north-georgia">North Georgia</option>
+                    <option value="middle-georgia">Middle Georgia</option>
+                    <option value="south-georgia">South Georgia</option>
+                    <option value="coastal-georgia">Coastal Georgia</option>
                 </select>
             </div>
-            <div id="strategiesGrid" class="strategies-grid"></div>
-        </section>
 
-        <!-- Georgia Context Section -->
-        <section id="georgia" class="content-section">
-            <div class="section-header">
-                <h2>Georgia Context</h2>
-                <p>Understanding Georgia's unique social impact landscape</p>
+            <div class="filter-group">
+                <label for="typeFilter">Organization Type:</label>
+                <select id="typeFilter">
+                    <option value="all">All Types</option>
+                    <option value="nonprofit">Nonprofit</option>
+                    <option value="government">Government</option>
+                    <option value="foundation">Foundation</option>
+                    <option value="social-enterprise">Social Enterprise</option>
+                    <option value="corporate">Corporate</option>
+                </select>
             </div>
-            <div id="georgiaContent" class="georgia-content"></div>
-        </section>
 
-        <!-- Glossary Section -->
-        <section id="glossary" class="content-section">
-            <div class="section-header">
-                <h2>Glossary</h2>
-                <p>Key terms and concepts in social impact work</p>
+            <div class="filter-group">
+                <label for="focusFilter">Focus Area:</label>
+                <select id="focusFilter">
+                    <option value="all">All Focus Areas</option>
+                    <option value="education">Education</option>
+                    <option value="healthcare">Healthcare</option>
+                    <option value="housing">Housing</option>
+                    <option value="economic-development">Economic Development</option>
+                    <option value="environment">Environment</option>
+                    <option value="arts-culture">Arts & Culture</option>
+                </select>
             </div>
-            <div class="glossary-filters">
-                <input type="text" id="glossarySearch" placeholder="Search glossary terms...">
-            </div>
-            <div id="glossaryList" class="glossary-list"></div>
-        </section>
-    </main>
 
-    <!-- Modal -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="modalBody"></div>
+            <div class="search-group">
+                <input type="text" id="searchInput" placeholder="Search organizations...">
+            </div>
+
+            <button id="resetFilters" class="btn-secondary">Reset Filters</button>
+        </div>
+
+        <div class="view-toggle">
+            <button id="mapViewBtn" class="view-btn active">Map View</button>
+            <button id="listViewBtn" class="view-btn">List View</button>
+            <button id="networkViewBtn" class="view-btn">Network View</button>
+        </div>
+
+        <div class="main-content">
+            <div id="mapView" class="view-container active">
+                <div id="map"></div>
+                <div id="mapLegend" class="legend">
+                    <h3>Legend</h3>
+                    <div class="legend-item">
+                        <span class="legend-marker nonprofit"></span>
+                        <span>Nonprofit</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-marker government"></span>
+                        <span>Government</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-marker foundation"></span>
+                        <span>Foundation</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-marker social-enterprise"></span>
+                        <span>Social Enterprise</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-marker corporate"></span>
+                        <span>Corporate</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="listView" class="view-container">
+                <div id="organizationList" class="organization-list"></div>
+            </div>
+
+            <div id="networkView" class="view-container">
+                <div id="networkGraph"></div>
+                <div class="network-info">
+                    <h3>Network Connections</h3>
+                    <p>Visualizing partnerships and collaborations across Georgia's impact ecosystem</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="detailPanel" class="detail-panel">
+            <button id="closeDetail" class="close-btn">&times;</button>
+            <div id="detailContent"></div>
+        </div>
+
+        <div class="stats-panel">
+            <div class="stat-card">
+                <h3 id="totalOrgs">0</h3>
+                <p>Organizations</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="totalPartners">0</h3>
+                <p>Partnerships</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="coveragePercent">0%</h3>
+                <p>County Coverage</p>
+            </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 Georgia Impact Ecosystem Navigator</p>
-            <p>A tool for understanding and navigating social impact strategies</p>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
     <script type="module" src="assets/js/main.js"></script>
 </body>
 </html>
